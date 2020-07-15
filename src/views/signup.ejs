@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/design.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg header ">
+    <a class="text-white ml-5" href="/" style="text-decoration: none;">HOME</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="far fa-square text-white ml-auto" ></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+      
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        
+        <%for(var i=0;i<nav.length;i++){%>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="<%=nav[i].link%>" id="<%=nav[i].title%>"><%=nav[i].title%></a>
+          </li>
+          <%}%>
+      </ul>
+      
+    </div>
+  </nav>
+      
+  <div class="back m-0" style="border-radius: 0px;min-height: 200px;">
+    <div class="row p-2">
+    
+    <div class="col-md-7">
+      <h1 class="h1style text-white display-3 mt-5 ml-5">Library</h1>
+    </div>
+      
+      <div class="col-md-5">
+        <div class="header mt-5 mb-2" style=" min-height: 90px;margin-right: 50px;margin-left: 50px;">
+          <div class="row">
+            <div class="col-sm-12">
+              <div style="height: 40px;"> </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="col-md-1"> <div style="height: 40px;"> </div></div> -->
+    </div>
+    <div  class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div style="height: 60px;"> </div>
+        </div>
+      </div> 
+    </div>
+  </div>
+  
+
+
+     <div class="container-fluid jumbotron mb-0 flex-column" >
+        <div style="background-color: white;margin-top: -95px;margin-left: 25px;margin-right:25px;background-image: url(flower.jpg);">
+             
+             <div style="height: 75px;"></div>
+            
+
+
+              <div class="container">
+                  <div class="row">
+                        <div class="col-md-4"></div>
+                      <div id="signup" class="col-md-4">
+                          <h1 id="h1sign">Sign Up</h1>
+                          <form action="/signup/add" method="POST" onsubmit="return validate()">
+
+                          <table class="m-auto p-3">
+                          <tr><td><input type="text" name="firstname" id="fname" placeholder="Enter First Name"></td></tr>
+                          <tr><td><div class="val" id="val1"></div></td></tr>
+                          <tr><td><input type="text" name="lastname" id="lname" placeholder="Enter Last Name"></td></tr>
+                          <tr><td><div class="val" id="val2"></div></td></tr>
+                           <tr><td><div id="ge"><label class="text-white">Gender:</label><input type="radio" name="gender" id="gender1" value="male"><label class="text-white">Male: </label><input id="gender2" type="radio" name="gender" value="female"><label class="text-white">Female: </label><input id="gender3" type="radio" name="gender" value="other"><label class="text-white"> Other: </label></div></td></tr>
+                          <tr><td><div class="val" id="val3"></div></td></tr>
+                          <tr><td><label class="text-white">Date of birth:</label><input type="date" name="dob" id="dob" placeholder="DOB"></td></tr>
+                          <tr><td><div class="val" id="val4"></div></td></tr>
+                          <tr><td><textarea name="" id="add" cols="25" rows="4" placeholder="Type address here"></textarea></td></tr>
+                          <tr><td><div class="val" id="val5"></div></td></tr>
+                          <tr><td><input type="text" name="emailid" id="email" placeholder="Enter Email Id"></td></tr>
+                          <tr><td><div class="val" id="val6"></div></td></tr>
+                          <tr><td><input type="number" name="phoneno" id="phone" placeholder="Enter phone number"></td></tr>
+                          <tr><td><div class="val" id="val7"></div></td></tr>
+                          <tr><td><div style="text-align: center;margin-bottom: 50px;margin-top: 10px;"><label for="" class="text-white">UserType:</label><select name="usertype" id="user" required>
+                            <option value="Admin">Admin</option>
+                            <option value="Student">Student</option>
+                          </select></div></td></tr>
+                          <tr><td><input type="text" name="username" id="uname" placeholder="Enter User Name"></td></tr>
+                          <tr><td><div class="val" id="val8"></div></td></tr>
+                          <tr><td><input type="password" name="password" id="pass" placeholder="Enter password" onkeyup="data()" onkeydown="data()"></td></tr>
+                          <tr><td><div class="val" id="str"></div></td></tr>
+                          <tr><td><div class="val" id="val9"></div></td></tr>
+                          <tr><td><input type="password" name="" id="cpass" placeholder="Confirm password"></td></tr>
+                          <tr><td><div class="val" id="val10"></div></td></tr>
+                          <tr><td><button type="submit" class="btn btn-xl float-right text-white" style="background-color:crimson;"> Sign Up</button></td></tr>
+                          <tr><td><div style="display: flex;" class="m-3"><pre class="text-white">Already an account   </pre><label for=""><a href="/login" style="color:crimson;" ><b> Log in </b></a></div></label></td></tr>
+                          </table>
+                          </form>
+
+                      </div>
+                          <div class="col-md-4"></div>
+                        
+                    </div>
+              </div>
+
+          
+            
+               
+                <div style="height: 75px;"></div>
+      </div>
+            
+            <h2 style="margin-top: 75px;">Follow Us</h2>
+            <div class="btn-group" style="width: 250px;">
+              <button class="btn btn-primary" type="button" >Twitter</button>
+              <button class="btn btn-info btnfacebook" type="button" >Facebook</button>
+              <button class="btn btn-danger btnplus" type="button" >Google+</button>
+            </div>
+    </div>
+      
+    <script>
+      var b=document.getElementById("ADD BOOK");
+      var c=document.getElementById("ADD AUTHOR");
+      var d=document.getElementById("BOOKS");
+      var e=document.getElementById("AUTHOR");
+      b.style.display="none";
+      c.style.display="none";
+      d.style.display="none";
+      e.style.display="none";
+    </script>        
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="/js/bootstrap.min.js"></script>         
+<script src="/js/validation.js"></script>
+</body>
+</html>

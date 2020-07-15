@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%=title%></title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/design.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+</head>
+<body">
+  <nav class="navbar navbar-expand-lg header ">
+    <a class="text-white ml-5" href="/" style="text-decoration: none;">HOME</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="far fa-square text-white ml-auto" ></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+      
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <%for(var i=0;i<nav.length;i++){%>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="<%=nav[i].link%>" id="<%=nav[i].title%>"><%=nav[i].title%></a>
+        </li>
+        <%}%>
+        <!-- <li class="nav-item">
+          <a class="nav-link text-white" href="signup.html" tabindex="-1" aria-disabled="true">SIGNUP</a>
+        </li> -->
+      </ul>
+      
+    </div>
+  </nav>
+
+
+
+      
+        
+      <div class="back m-0" style="border-radius: 0px;min-height: 200px;">
+        <div class="row p-2">
+        
+        <div class="col-md-7">
+          <h1 class="h1style text-white display-3 mt-5 ml-5">Books</h1>
+        </div>
+          
+          <div class="col-md-5">
+            <div class="header mt-5 mb-2" style=" min-height: 90px;margin-right: 50px;margin-left: 50px;">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div style="height: 40px;"> </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="col-md-1"> <div style="height: 40px;"> </div></div> -->
+        </div>
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12">
+              <div style="height: 60px;"> </div>
+            </div>
+          </div> 
+        </div>
+      </div>
+      
+
+
+      <div class="jumbotron m-0" >
+          <div style="background-color: white;margin-top: -95px;margin-left: 25px;margin-right:25px;">
+    
+            <%for(var i=0;i<books.length;i++){%>
+              
+              <button class="btn btnd btn-xl bg-danger text-white float-right mt-3 mr-3" onclick="location.href='/books/delete/<%=books[i]._id%>'">Delete</button><button class="btn btne btn-xl bg-info text-white float-right mt-3 mr-3"  value="<%=books[i]._id%>" onclick="we(this.value)">Edit</button>
+        
+              <div class="row" >
+                <div class="col-md-2">
+                  <img src="/image/<%=books[i].image%>" class="rounded-circle" alt="dada" style="margin: 50px;width: 150px;height: 150px;">
+                </div>
+                <div class="col-md-1">
+                     
+                </div>
+                <div class="col-md-9">
+                  <h3 style="margin-top: 50px;"><%=books[i].title%></h3>
+                  <pre class="bg-dark text-white" style="width: min-content;"> <%=books[i].author%> </pre>
+                  <samp style="margin-bottom: 200px"><%=books[i].genre%><ul class="d-inline-block"><a href="/books/<%=books[i]._id%>" style="text-decoration: none;color:black;"><li>Read More</li></a></ul></samp>
+                </div> 
+              </div>
+              <div id="<%=books[i]._id%>" style="display: none;">
+               
+                <form action="/books/update" method="POST" enctype="multipart/form-data">
+                  <table style="margin:auto;padding:50px;">
+                    <tr><td><input type="hidden" name="id" value="<%=books[i]._id%>" id="hide"></td></tr>
+                  <tr><td><span for="">Book title:</span><input type="text" name="title" value="<%=books[i].title%>" id="title" placeholder="Title of the book"></td></tr>
+                  
+                  <tr><td><span for="">Athor name:</span><input type="text" name="author" value="<%=books[i].author%>" id="author" placeholder="Author name"></td></tr>
+                 
+
+                  <tr><td><span for="">Genre:</span><input type="text" name="genre" value="<%=books[i].genre%>" id="genre" placeholder="Book Genre"></td></tr>
+                 
+
+                  <tr><td><span for="">Image File</span><input type="file" name="image1"  id="file" placeholder="Upload author image"></td></tr>
+                  <tr><td><input type="hidden" name="image" value="<%=books[i].image%>" id="hid"></td></tr>
+
+                  
+                  <tr><td><button type="submit" style="background-color:crimson;color:white;float: right; " class="btn m-3"> UPDATE </button></td></tr>
+                  
+                </table>
+                </form>
+               
+                
+              </div>
+              <hr style="width: 98%;">
+              <%}%>
+      <script type="text/javascript">
+               function hide(a)
+               {
+                if(a=="Student")
+            {
+              var deletes =document.getElementsByClassName('btnd');
+              for(var j=0;j<deletes.length;j++)
+              {
+                deletes[j].style.display="none";
+              }
+              var edits =document.getElementsByClassName('btne');
+              for(var k=0;k<edits.length;k++)
+              {
+                edits[k].style.display="none";
+              }
+              
+            }
+          
+          }
+      </script>
+                  <div style="text-align: right;"><a type="button" href="/" class="btn bg-primary text-white m-3"> More <span class="far fa-square"></span></a></div>
+                
+                
+            </div>
+            <h2 style="margin-top: 75px;">Follow Us</h2>
+            <div class="btn-group" style="width: 250px;">
+              <button class="btn btn-primary" type="button" id="<%=data%>">Twitter</button>
+              <button class="btn btn-info btnfacebook" type="button" >Facebook</button>
+              <button class="btn btn-danger btnplus" type="button" >Google+</button>
+            </div>
+      </div>
+      <script src="/js/display.js"></script>
+      <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="/js/bootstrap.min.js"></script>
+
+</body>
+</html>
